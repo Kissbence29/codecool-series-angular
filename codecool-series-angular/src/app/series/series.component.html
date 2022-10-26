@@ -1,0 +1,21 @@
+<div class="input-container">
+  <input type="text" class="search"  (input)="onChange($event)">
+</div>
+<div class="parent" >
+  <div class="card-container" *ngFor="let show of shows|paginate:{itemsPerPage:count,currentPage:p}" (click)="navToSerDetail(show.id)">
+    
+    <div class="card">
+      <div>
+        <div>{{show.title|titlecase}} ({{show.year|date:'yyyy'}})</div>
+        <div>{{show.showGenres}}  <br> {{show.runtime}}min</div>
+        <div class="overview-container" *ngIf="show.overview!==null;else NoDesc">
+          <div>{{show.overview}}</div>
+        </div>
+        <ng-template #NoDesc>This Show doesn't have a description!</ng-template>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="paginate">
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>

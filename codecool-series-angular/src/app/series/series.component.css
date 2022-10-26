@@ -1,0 +1,48 @@
+.card {
+    width: 425px;
+    height: 200px;
+    box-sizing: border-box;
+    justify-content: space-between;
+    padding-top: 10px;
+    
+    border-radius: 5px;
+    /* 5px rounded corners */
+    border-color: aquamarine;
+    border-style: solid;
+    overflow: hidden
+}
+
+.card-container {
+
+    flex: 0 0 33.333333%;
+    padding-bottom: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+}
+
+.card:hover {
+    cursor: pointer;
+    border-color: red;
+    overflow: auto;
+}
+
+.parent {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 20px;
+}
+
+.paginate{
+    width: 100%;
+    text-align: center;
+}
+
+.input-container{
+    padding-top:10px ;
+    text-align: center;
+}
+
+.search{
+    width: 400px;
+    height: 25px;
+}

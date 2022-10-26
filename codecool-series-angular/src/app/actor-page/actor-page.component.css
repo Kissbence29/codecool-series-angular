@@ -1,0 +1,18 @@
+.actor-container{
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+.bio{
+    text-align: justify;
+    padding-right: 10px;
+    padding-top: 10px;
+}
+
+.actor{
+    font-size: x-large;
+}
+
+.roles{
+    padding-top: 15px;
+}

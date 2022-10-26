@@ -1,0 +1,24 @@
+<div class="title">{{show.title}} ({{show.year|date:'yyyy'}})</div>
+<div class="details">{{show.seasonNumber}} season, {{show.runtime}} min</div>
+<div class="genre">{{show.genreList}}</div>
+<div class="container">
+    <div class="video" *ngIf="show.trailer!==undefined;else NoVide">
+        <iframe width="560" height="315" [src]="show.trailer|safe" title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+
+    </div>
+    <div class="desc">{{show.overview}}</div>
+</div>
+<div class="char-container">
+    <div id="actor">Actors and Characters</div>
+    <div id="wrapper">
+        <div id="first" *ngFor="let actor of show.actorList">
+            <div><a routerLink="/actor/{{actor}}">{{actor}}</a></div>
+        </div>
+        <div id="second" *ngFor="let char of show.characterList">
+            <div>{{char}}</div>
+        </div>
+    </div>
+</div>
+<ng-template  #NoVide><div class="no-video">There is no available trailer for this show</div></ng-template>
