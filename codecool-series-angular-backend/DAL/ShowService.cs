@@ -13,34 +13,34 @@ namespace codecool_series_angular_backend.DAL
         }
 
         public async Task<List<ShowViewModel>> GetAllShows()
-        { 
+        {
             var showsFromDB = await _context.Shows.
-                
+
                 Include(show => show.Seasons).
                 Include(show => show.ShowGenres).
                 ThenInclude(genre => genre.Genre).
                 Include(show => show.ShowCharacters).
                 ThenInclude(character => character.Actor).
-                OrderBy(show=>show.Title).
+                OrderBy(show => show.Title).
                 AsNoTracking().
                 ToListAsync();
 
             return showsFromDB.Select(show => new ShowViewModel
-                {
-                    Id = show.Id,
-                    Title = show.Title,
-                    Year = show.Year,
-                    Overview = show.Overview,
-                    ShowGenres = show.ShowGenres?.Select(genre => genre?.Genre?.Name)?.ToList(),
-                    ActorList = show.ShowCharacters?.Select(character => character?.Actor?.Name)?.ToList(),
-                    Runtime = show.Runtime
-                })
+            {
+                Id = show.Id,
+                Title = show.Title,
+                Year = show.Year,
+                Overview = show.Overview,
+                ShowGenres = show.ShowGenres?.Select(genre => genre?.Genre?.Name)?.ToList(),
+                ActorList = show.ShowCharacters?.Select(character => character?.Actor?.Name)?.ToList(),
+                Runtime = show.Runtime
+            })
                 .ToList();
         }
 
         public async Task<ShowDetailedViewModel> GetShow(int showId)
         {
-            var showFromDb = await _context.Shows.Where(show=>show.Id==showId)
+            var showFromDb = await _context.Shows.Where(show => show.Id == showId)
                 .Include(show => show.Seasons)
                 .Include(show => show.ShowGenres)
                 .ThenInclude(genre => genre.Genre)
@@ -65,9 +65,9 @@ namespace codecool_series_angular_backend.DAL
                 GenreList = showFromDb.ShowGenres.Select(genre => genre.Genre.Name)
                     .ToList(),
                 SeasonNumber = showFromDb.Seasons.Count,
-                ActorList = showFromDb.ShowCharacters?.Where(charac=>charac.CharacterName!="")?.Select(character => character?.Actor?.Name)
+                ActorList = showFromDb.ShowCharacters?.Where(charac => charac.CharacterName != "")?.Select(character => character?.Actor?.Name)
                     ?.ToList(),
-                CharacterList = showFromDb.ShowCharacters?.Select(character=>character.CharacterName).ToList(),
+                CharacterList = showFromDb.ShowCharacters?.Select(character => character.CharacterName).ToList(),
             };
             return show;
         }

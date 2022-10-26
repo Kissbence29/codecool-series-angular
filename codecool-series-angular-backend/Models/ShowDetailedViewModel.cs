@@ -1,6 +1,6 @@
 ﻿namespace codecool_series_angular_backend.Models
 {
-    public class ShowDetailedViewModel:Show
+    public class ShowDetailedViewModel : Show
     {
         public List<string> GenreList { get; set; }
         public int SeasonNumber { get; set; }
