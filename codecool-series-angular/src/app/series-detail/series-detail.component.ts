@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Show } from '../series/series.component';
+import { Show } from '../Models/Show';
+import { SeriesService } from '../Services/series.service';
 
 @Component({
   selector: 'app-series-detail',
@@ -10,21 +10,17 @@ import { Show } from '../series/series.component';
 })
 export class SeriesDetailComponent implements OnInit {
 
-  private showId:string="";
-  constructor(private http:HttpClient,private route:ActivatedRoute) { }
-  public show:Show={};
- 
-  ngOnInit(): void {
-   this.showId= this.route.snapshot.params['showId'];
-    this.fetchData(this.showId);
-    
-  }
+  private showId: string = "";
+  constructor(private route: ActivatedRoute, private seriesService: SeriesService) { }
+  public show: Show = {};
 
-  fetchData(showId:string):any{
-    return this.http.get<Show>(`/showapi/shows/${showId}`).subscribe(result => {
+  ngOnInit(): void {
+    this.showId = this.route.snapshot.params['showId'];
+    this.seriesService.getShowbyId(this.showId).subscribe(result => {
       this.show = result as Show;
-      this.show.trailer = this.show.trailer?.replace("http","https").replace("watch?v=","embed/");
+      this.show.trailer = this.show.trailer?.replace("http", "https").replace("watch?v=", "embed/");
     }, error => console.error(error));
+
   }
 
 }
