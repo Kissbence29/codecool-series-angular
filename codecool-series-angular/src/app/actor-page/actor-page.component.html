@@ -1,14 +1,17 @@
 <div class="actor-container">
     <div *ngIf="actor.death===null;else Dead">
-        <div class="actor">{{actor.name}} ({{actor.birthday|date:"yyyy.MM.dd"}})</div>
+        <div class="actor">{{actor.name}}</div>
+        <div *ngIf="actor.birthday!==null">
+            <div>({{actor.birthday|date:"yyyy.MM.dd"}})</div>
+        </div>
     </div>
     <div *ngIf="nobio();else Nobio">
         <div class="bio">{{actor.biography}}</div>
     </div>
-    
-        <div class="roles">Famous Roles</div>
-        <div *ngFor="let char of actor.showCharacters">{{char.characterName}}</div>
-   
+
+    <div class="roles">Famous Roles</div>
+    <div *ngFor="let char of actor.showCharacters">{{char.characterName}}</div>
+
 </div>
 <ng-template #Dead>
     <div class="actor">{{actor.name}} ({{actor.birthday|date:"yyyy.MM.dd"}}-{{actor.death|date:"yyyy.MM.dd"}})</div>
