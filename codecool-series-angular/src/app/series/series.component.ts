@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { SeriesService } from '../Services/series.service';
+import { Show } from '../Models/Show';
 @Component({
   selector: 'app-series',
   templateUrl: './series.component.html',
@@ -10,17 +11,16 @@ export class SeriesComponent implements OnInit {
   public shows: Show[] = [];
   private baseShows: Show[] = [];
   private router: Router;
-  private _http: HttpClient;
   p: number = 1;
   count: number = 9;
-  constructor(http: HttpClient, router: Router) {
-    this._http = http;
+  constructor(router: Router, private seriesService: SeriesService) {
     this.router = router;
   }
 
   onChange(event: Event) {
+    this.shows = this.baseShows;
     this.shows = this.shows.filter((show: Show) => show.title?.toLowerCase().includes((event.target as HTMLInputElement).value))
-    console.log((event.target as HTMLInputElement).value);
+
     if ((event.target as HTMLInputElement).value === '') {
       this.shows = this.baseShows;
 
@@ -28,16 +28,13 @@ export class SeriesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.fetchData();
+    this.seriesService.getAllShows().subscribe(result => {
+      this.shows = result;
+      this.baseShows = this.shows;
+    })
 
   }
 
-  fetchData(): any {
-    return this._http.get<Show[]>(`/showapi/shows`).subscribe(result => {
-      this.shows = result as Show[];
-      this.baseShows = result;
-    }, error => console.error(error));
-  }
 
   navToSerDetail(page: any): void {
     this.router.navigate(["/series", page])
@@ -45,16 +42,4 @@ export class SeriesComponent implements OnInit {
 
 }
 
-export interface Show {
-  id?: number,
-  title?: string,
-  year?: Date,
-  overview?: string,
-  showGenres?: string[],
-  actorList?: string[],
-  runtime?: number
-  trailer?: string;
-  characterList?: string[];
-  genreList?: string[];
-  seasonNumber?:number;
-}
+
