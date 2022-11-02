@@ -1,7 +1,6 @@
-﻿namespace codecool_series_angular_backend.Models
+﻿namespace codecool_series_angular_backend.Models;
+
+public class Show : ShowBaseModel
 {
-    public class Show : ShowBaseModel
-    {
-        public virtual ICollection<ShowGenre> ShowGenres { get; set; }
-    }
+    public virtual ICollection<ShowGenre> ShowGenres { get; set; }
 }

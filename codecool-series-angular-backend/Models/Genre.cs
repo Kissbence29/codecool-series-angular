@@ -1,15 +1,14 @@
-﻿namespace codecool_series_angular_backend.Models
+﻿namespace codecool_series_angular_backend.Models;
+
+public class Genre
 {
-    public class Genre
+    public Genre()
     {
-        public Genre()
-        {
-            ShowGenres = new HashSet<ShowGenre>();
-        }
-
-        public int Id { get; set; }
-        public string Name { get; set; } = null!;
-
-        public virtual ICollection<ShowGenre> ShowGenres { get; set; }
+        ShowGenres = new HashSet<ShowGenre>();
     }
+
+    public int Id { get; set; }
+    public string Name { get; set; } = null!;
+
+    public virtual ICollection<ShowGenre> ShowGenres { get; set; }
 }
