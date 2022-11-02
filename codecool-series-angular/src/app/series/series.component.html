@@ -5,7 +5,7 @@
   <div class="card-container" *ngFor="let show of shows|paginate:{itemsPerPage:count,currentPage:p}" (click)="navToSerDetail(show.id)">
     
     <div class="card">
-      <div>
+      <div class="card-fill">
         <div>{{show.title|titlecase}} ({{show.year|date:'yyyy'}})</div>
         <div>{{show.showGenres}}  <br> {{show.runtime}}min</div>
         <div class="overview-container" *ngIf="show.overview!==null;else NoDesc">
