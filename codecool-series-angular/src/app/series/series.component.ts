@@ -30,11 +30,15 @@ export class SeriesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+   this.getShows();  
+  }
+
+  getShows() {
     this.seriesService.getAllShows().subscribe(result => {
       this.shows = result;
       this.baseShows = this.shows;
-    })
-
+    }
+    )
   }
 
 
