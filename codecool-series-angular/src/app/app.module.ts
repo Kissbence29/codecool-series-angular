@@ -8,6 +8,7 @@ import { SeriesDetailComponent } from './series-detail/series-detail.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { SafePipe } from './safe.pipe';
 import { ActorPageComponent } from './actor-page/actor-page.component';
+import { SeriesCardComponent } from './series-card/series-card.component';
 const routes: Routes = [
   { path: 'series', component: SeriesComponent },
   { path: '', redirectTo: '/series', pathMatch: 'full' },
@@ -16,7 +17,7 @@ const routes: Routes = [
 ];
 @NgModule({
   declarations: [
-    AppComponent,SeriesComponent, SeriesDetailComponent,SafePipe, ActorPageComponent
+    AppComponent,SeriesComponent, SeriesDetailComponent,SafePipe, ActorPageComponent, SeriesCardComponent
   ],
   imports: [
     BrowserModule, HttpClientModule, RouterModule.forRoot(routes),NgxPaginationModule

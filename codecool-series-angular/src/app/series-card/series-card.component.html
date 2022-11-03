@@ -1,0 +1,10 @@
+<div class="card">
+    <div class="card-fill">
+            <div>{{show.title|titlecase}} ({{show.year|date:'yyyy'}})</div>
+            <div>{{show.showGenres}} <br> {{show.runtime}}min</div>
+            <div class="overview-container" *ngIf="show.overview!==null;else NoDesc">
+                <div>{{show.overview}}</div>
+            </div>
+            <ng-template #NoDesc>This Show doesn't have a description!</ng-template>
+        </div>
+    </div>

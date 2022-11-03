@@ -10,11 +10,9 @@ import { Show } from '../Models/Show';
 export class SeriesComponent implements OnInit {
   public shows: Show[] = [];
   private baseShows: Show[] = [];
-  private router: Router;
   p: number = 1;
   count: number = 9;
-  constructor(router: Router, private seriesService: SeriesService) {
-    this.router = router;
+  constructor(private seriesService: SeriesService,private router: Router) {
   }
 
   onChange(event: Event) {
@@ -27,6 +25,10 @@ export class SeriesComponent implements OnInit {
     }
   }
 
+  navToSerDetail(page: any): void {
+    this.router.navigate(["/series", page])
+  }
+
   ngOnInit(): void {
     this.seriesService.getAllShows().subscribe(result => {
       this.shows = result;
@@ -36,9 +38,7 @@ export class SeriesComponent implements OnInit {
   }
 
 
-  navToSerDetail(page: any): void {
-    this.router.navigate(["/series", page])
-  }
+  
 
 }
 
