@@ -46,6 +46,7 @@ namespace codecool_series_angular_backend.DAL;
                 .ThenInclude(genre => genre.Genre)
                 .Include(show => show.ShowCharacters)
                 .ThenInclude(character => character.Actor)
+                .AsNoTracking()
                 .OrderBy(show => show.Title).AsNoTracking()
                 .FirstAsync();
 

@@ -17,6 +17,7 @@ public class ActorService : IActorService
         var actorFromDb = await _context.Actors
             .Include(actor => actor.ShowCharacters)
             .ThenInclude(showchar=>showchar.Show)
+            .AsNoTracking()
             .Where(actor => actor.Name == actorName)
             .FirstAsync();
 
