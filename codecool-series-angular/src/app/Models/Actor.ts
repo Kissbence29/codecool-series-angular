@@ -7,4 +7,5 @@ export interface Actor{
     death?:Date;
     biography?:string;
     showCharacters?:ShowCharacters[];
+    showList?:string[];
 }
