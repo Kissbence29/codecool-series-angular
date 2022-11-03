@@ -16,3 +16,20 @@
 .roles{
     padding-top: 15px;
 }
+
+#wrapper {
+    margin-top: 5px;
+    width: 500px;
+   
+    overflow: hidden; /* will contain if #first is longer than #second */
+}
+#first {
+    margin-top: 5px;
+    width: 275px;
+    float:left; /* add this */
+   
+}
+#second {
+    margin-top: 5px;
+    overflow: hidden; /* if you don't want #second to wrap below #first */
+}

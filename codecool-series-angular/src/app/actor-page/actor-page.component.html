@@ -9,8 +9,17 @@
         <div class="bio">{{actor.biography}}</div>
     </div>
 
-    <div class="roles">Famous Roles</div>
-    <div *ngFor="let char of actor.showCharacters">{{char.characterName}}</div>
+    
+
+    <div id="wrapper">
+        <div>Famous roles</div>
+        <div id="first" *ngFor="let char of actor.showCharacters">
+            <div>{{char.characterName}}</div>
+        </div>
+        <div id="second" *ngFor="let character of actor.showList">
+            <div>{{character}}</div>
+        </div>
+    </div>
 
 </div>
 <ng-template #Dead>
