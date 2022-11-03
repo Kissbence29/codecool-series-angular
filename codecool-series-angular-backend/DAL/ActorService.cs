@@ -12,11 +12,25 @@ public class ActorService : IActorService
         _context = context;
     }
 
-    public async Task<Actor> GetActorByName(string actorName)
+    public async Task<ActorViewModel> GetActorByName(string actorName)
     {
-        return await _context.Actors
+        var actorFromDb = await _context.Actors
             .Include(actor => actor.ShowCharacters)
+            .ThenInclude(showchar=>showchar.Show)
             .Where(actor => actor.Name == actorName)
             .FirstAsync();
+
+        var actor = new ActorViewModel
+        {
+            Id = actorFromDb.Id,
+            Name = actorFromDb.Name,
+            Birthday = actorFromDb.Birthday,
+            Death = actorFromDb.Death,
+            Biography = actorFromDb.Biography,
+            ShowCharacters = actorFromDb.ShowCharacters,
+            ShowList = actorFromDb.ShowCharacters.Select(showchar => showchar.Show.Title).ToList()
+        };
+
+        return actor;
     }
 }

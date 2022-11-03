@@ -16,7 +16,7 @@ public class ActorApiController : ControllerBase
     }
 
     [HttpGet("{actorName}")]
-    public async Task<Actor> GetActorByName(string actorName)
+    public async Task<ActorViewModel> GetActorByName(string actorName)
     {
         return await _actorService.GetActorByName(actorName);
     }
