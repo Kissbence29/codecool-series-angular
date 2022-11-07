@@ -2,6 +2,6 @@
 {
     public class ActorViewModel:Actor
     {
-        public List<string> ShowList { get; set; }
+        public Dictionary<int,string> ShowList { get; set; }
     }
 }
