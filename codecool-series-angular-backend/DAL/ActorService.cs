@@ -29,7 +29,8 @@ public class ActorService : IActorService
             Death = actorFromDb.Death,
             Biography = actorFromDb.Biography,
             ShowCharacters = actorFromDb.ShowCharacters,
-            ShowList = actorFromDb.ShowCharacters.Select(showchar => showchar.Show.Title).ToList()
+            ShowList = actorFromDb.ShowCharacters.Select(showchar => new KeyValuePair<int, string>(showchar.ShowId, showchar.Show.Title))
+                .ToDictionary(showchar=>showchar.Key,showchar=>showchar.Value)
         };
 
         return actor;
