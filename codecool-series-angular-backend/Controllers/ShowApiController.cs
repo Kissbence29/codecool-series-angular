@@ -26,4 +26,10 @@ public class ShowApiController : ControllerBase
     {
         return await _showService.GetShow(showId);
     }
+
+    [HttpGet("shows/top-rated")]
+    public async Task<List<ShowViewModel>> GetTopHundred()
+    {
+        return await _showService.GetTopHundredShow();
+    }
 }
