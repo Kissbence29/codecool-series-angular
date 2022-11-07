@@ -72,5 +72,32 @@ namespace codecool_series_angular_backend.DAL;
             };
             return show;
         }
+
+        public async Task<List<ShowViewModel>> GetTopHundredShow()
+        {
+        var showsFromDB = await _context.Shows.
+            Include(show => show.Seasons).
+            Include(show => show.ShowGenres).
+            ThenInclude(genre => genre.Genre).
+            Include(show => show.ShowCharacters).
+            ThenInclude(character => character.Actor).
+            OrderByDescending(show => show.Rating).
+            Take(100).
+            AsNoTracking().
+            ToListAsync();
+
+        return showsFromDB.Select(show => new ShowViewModel
+            {
+                Id = show.Id,
+                Title = show.Title,
+                Year = show.Year,
+                Overview = show.Overview,
+                ShowGenres = show.ShowGenres?.Select(genre => genre?.Genre?.Name)?.ToList(),
+                ActorList = show.ShowCharacters?.Select(character => character?.Actor?.Name)?.ToList(),
+                Runtime = show.Runtime,
+                Rating = show.Rating
+            })
+            .ToList();
+    }
     }
 
