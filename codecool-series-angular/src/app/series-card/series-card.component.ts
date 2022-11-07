@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'series-card',
@@ -7,15 +8,20 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class SeriesCardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
     this.show=this.show.show;
+    
   }
 
   @Input()
   show:any;
 
+  navToSerDetail(page: any): void {
+    console.log(page);
+    this.router.navigate(["/series", page])
+  }
   
 
 }

@@ -9,20 +9,24 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { SafePipe } from './safe.pipe';
 import { ActorPageComponent } from './actor-page/actor-page.component';
 import { SeriesCardComponent } from './series-card/series-card.component';
+import { TopRatedComponent } from './top-rated/top-rated.component';
 const routes: Routes = [
-  { path: 'series', component: SeriesComponent },
+  {path:'series/top-rated',pathMatch:"full",component:TopRatedComponent},
+  { path: 'series',pathMatch:"full", component: SeriesComponent },
   { path: '', redirectTo: '/series', pathMatch: 'full' },
   { path: 'series/:showId', component: SeriesDetailComponent },
-  {path:'actor/:actorName',component:ActorPageComponent}
+  {path:'actor/:actorName',component:ActorPageComponent},
+  
+  
 ];
 @NgModule({
   declarations: [
-    AppComponent,SeriesComponent, SeriesDetailComponent,SafePipe, ActorPageComponent, SeriesCardComponent
+    AppComponent,SeriesComponent, SeriesDetailComponent,SafePipe, ActorPageComponent, SeriesCardComponent, TopRatedComponent
   ],
   imports: [
     BrowserModule, HttpClientModule, RouterModule.forRoot(routes),NgxPaginationModule
   ],
-  providers: [],
+  providers: [SeriesCardComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

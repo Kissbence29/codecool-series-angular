@@ -1,18 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { SeriesService } from '../Services/series.service';
 import { Show } from '../Models/Show';
+import { SeriesCardComponent } from '../series-card/series-card.component';
 @Component({
   selector: 'app-series',
   templateUrl: './series.component.html',
-  styleUrls: ['./series.component.css']
+  styleUrls: ['./series.component.css'],
 })
 export class SeriesComponent implements OnInit {
   public shows: Show[] = [];
   private baseShows: Show[] = [];
   p: number = 1;
   count: number = 9;
-  constructor(private seriesService: SeriesService,private router: Router) {
+  constructor(private seriesService: SeriesService,private router: Router,private child:SeriesCardComponent) {
   }
 
   onChange(event: Event) {
@@ -25,12 +26,9 @@ export class SeriesComponent implements OnInit {
     }
   }
 
-  navToSerDetail(page: any): void {
-    this.router.navigate(["/series", page])
-  }
-
   ngOnInit(): void {
-   this.getShows();  
+   this.getShows();
+    
   }
 
   getShows() {
@@ -39,6 +37,10 @@ export class SeriesComponent implements OnInit {
       this.baseShows = this.shows;
     }
     )
+  }
+
+  onClick(page:any){
+    this.child.navToSerDetail(page); 
   }
 
 

@@ -2,9 +2,8 @@
   <input type="text" class="search" (input)="onChange($event)">
 </div>
 <div class="parent">
-  <div class="card-container" *ngFor="let show of shows|paginate:{itemsPerPage:count,currentPage:p}"
-    (click)="navToSerDetail(show.id)">
-    <series-card [show]={show}></series-card>
+  <div class="card-container" *ngFor="let show of shows|paginate:{itemsPerPage:count,currentPage:p}">
+    <series-card [show]={show}  (click)="onClick(show.id)"></series-card>
   </div>
   <div class="paginate">
     <pagination-controls (pageChange)="p = $event"></pagination-controls>
