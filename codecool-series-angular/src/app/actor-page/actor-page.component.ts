@@ -19,6 +19,11 @@ export class ActorPageComponent implements OnInit {
 
   }
   nobio(): boolean {
+    console.log(this.actor);
     return this.actor.biography !== "";
+  }
+
+  noCharacterName(showcharacter:string):boolean{
+    return showcharacter!=="";
   }
 }

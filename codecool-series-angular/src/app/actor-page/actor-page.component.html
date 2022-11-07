@@ -9,15 +9,17 @@
         <div class="bio">{{actor.biography}}</div>
     </div>
 
-    
+
 
     <div id="wrapper">
         <div>Famous roles</div>
         <div id="first" *ngFor="let char of actor.showCharacters">
+            <div *ngIf="noCharacterName(char.characterName);else NoCharName">
             <div>{{char.characterName}}</div>
         </div>
-        <div id="second" *ngFor="let character of actor.showList">
-            <div>{{character}}</div>
+        </div>
+        <div id="second" *ngFor="let character of actor.showList|keyvalue">
+            <div><a routerLink="/series/{{character.key}}">{{character.value}}</a></div>
         </div>
     </div>
 
@@ -28,3 +30,4 @@
 <ng-template #Nobio>
     <div class="bio">There is no bio yet!</div>
 </ng-template>
+<ng-template #NoCharName>Character is unknown at this point</ng-template>
