@@ -1,0 +1,9 @@
+<h1 class="title">Top 100 TV Shows!</h1>
+
+<div class="parent">
+<div class="container" *ngFor="let show of shows">
+    <div class="card" (click)="onClick(show.id)">
+        <series-card class="showCard" [show]="{show}"></series-card>
+    </div>
+</div>
+</div>
