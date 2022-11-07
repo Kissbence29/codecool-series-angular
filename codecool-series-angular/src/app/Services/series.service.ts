@@ -18,5 +18,10 @@ export class SeriesService {
     return this.http.get<Show>(`/showapi/shows/${id}`);
   }
 
+  getTopHundred():Observable<Show[]>
+  {
+    return this.http.get<Show[]>('/showapi/shows/top-rated');
+  }
+
 
 }
