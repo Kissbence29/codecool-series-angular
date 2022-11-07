@@ -6,4 +6,5 @@ public interface IShowService
 {
     Task<List<ShowViewModel>> GetAllShows();
     Task<ShowDetailedViewModel> GetShow(int showId);
+    Task<List<ShowViewModel>> GetTopHundredShow();
 }
