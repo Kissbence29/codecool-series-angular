@@ -12,4 +12,5 @@ public class ShowViewModel
     public short? Runtime { get; set; }
     public List<string?>? ShowGenres { get; set; }
     public List<string?>? ActorList { get; set; }
+    public decimal? Rating { get; set; }
 }
