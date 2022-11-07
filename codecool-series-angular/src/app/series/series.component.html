@@ -3,7 +3,7 @@
 </div>
 <div class="parent">
   <div class="card-container" *ngFor="let show of shows|paginate:{itemsPerPage:count,currentPage:p}">
-    <series-card [show]={show}  (click)="onClick(show.id)"></series-card>
+    <series-card [show]={show}  (click)="child.navToSerDetail(show.id)" #child></series-card>
   </div>
   <div class="paginate">
     <pagination-controls (pageChange)="p = $event"></pagination-controls>

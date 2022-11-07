@@ -11,7 +11,7 @@ import { SeriesService } from '../Services/series.service';
 export class TopRatedComponent implements OnInit {
 
   public shows:Show[]=[];
-  constructor(private seriesService:SeriesService,private seriesCard:SeriesCardComponent) { }
+  constructor(private seriesService:SeriesService) { }
 
   ngOnInit(): void {
     this.getShows();
@@ -25,10 +25,6 @@ export class TopRatedComponent implements OnInit {
 
     },error=>console.error(error)
     )
-  }
-
-  onClick(page:any){
-    this.seriesCard.navToSerDetail(page);
   }
 
 }

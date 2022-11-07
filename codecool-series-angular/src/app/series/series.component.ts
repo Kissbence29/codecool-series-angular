@@ -39,10 +39,6 @@ export class SeriesComponent implements OnInit {
     )
   }
 
-  onClick(page:any){
-    this.child.navToSerDetail(page); 
-  }
-
 
   
 

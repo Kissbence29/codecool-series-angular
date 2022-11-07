@@ -8,20 +8,20 @@ import { Router } from '@angular/router';
 })
 export class SeriesCardComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
-    this.show=this.show.show;
-    
+    this.show = this.show.show;
+
   }
 
   @Input()
-  show:any;
+  show: any;
 
   navToSerDetail(page: any): void {
     console.log(page);
     this.router.navigate(["/series", page])
   }
-  
+
 
 }
