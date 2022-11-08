@@ -23,5 +23,8 @@ export class SeriesCardComponent implements OnInit {
     this.router.navigate(["/series", page])
   }
 
+  norating(){
+    return this.show.rating!==null;
+  }
 
 }
