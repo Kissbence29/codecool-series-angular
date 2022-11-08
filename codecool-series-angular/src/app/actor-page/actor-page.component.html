@@ -19,7 +19,7 @@
         </div>
         </div>
         <div id="second" *ngFor="let character of actor.showList|keyvalue">
-            <div><a routerLink="/series/{{character.key}}">{{character.value}}</a></div>
+            <div ><a class="actorlink" routerLink="/series/{{character.key}}">{{character.value}}</a></div>
         </div>
     </div>
 
