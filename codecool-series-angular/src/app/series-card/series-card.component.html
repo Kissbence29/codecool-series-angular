@@ -1,8 +1,8 @@
 <div class="card">
     <div class="card-fill">
-            <div>{{show.title|titlecase}} ({{show.year|date:'yyyy'}})</div>
-            <div>{{show.showGenres}} <br> {{show.runtime}}min</div>
-            <div>{{show.rating|number:'1.1-1'}}</div>
+            <div><strong>{{show.title|titlecase}}</strong> ({{show.year|date:'yyyy'}})</div>
+            <h5>{{show.showGenres}} <br> {{show.runtime}}min</h5>
+            <div *ngIf="norating()" class="rating"><div class="fa fa-star checked"></div><div>{{show.rating|number:'1.1-1'}}</div></div>
             <div class="overview-container" *ngIf="show.overview!==null;else NoDesc">
                 <div>{{show.overview}}</div>
             </div>
