@@ -14,7 +14,7 @@
     <div id="actor">Actors and Characters</div>
     <div id="wrapper">
         <div id="first" *ngFor="let actor of show.actorList">
-            <div><a routerLink="/actor/{{actor}}">{{actor}}</a></div>
+            <div><a class="actorlink" routerLink="/actor/{{actor}}">{{actor}}</a></div>
         </div>
         <div id="second" *ngFor="let character of show.characterList">
             <div>{{character}}</div>
