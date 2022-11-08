@@ -11,5 +11,6 @@ body {
     font-size: 16px;
     line-height: 1.5;
     color: #fff;
-    background: rgb(82, 13, 13);
+    background: linear-gradient(225deg,rgba(15,63,255,0.8) 20%,rgba(255,11,122)40%, rgba(0,6,57));
+                
 }
