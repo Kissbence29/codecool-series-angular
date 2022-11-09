@@ -99,5 +99,10 @@ namespace codecool_series_angular_backend.DAL;
             })
             .ToList();
     }
+
+        public async Task<List<Genre>> GetAllGenre()
+        {
+            return await _context.Genres.AsNoTracking().ToListAsync();
+        }
     }
 
