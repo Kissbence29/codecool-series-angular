@@ -1,9 +1,10 @@
 ﻿using codecool_series_angular_backend.Models;
+using codecool_series_angular_backend.Models.ViewModels;
 using Microsoft.EntityFrameworkCore;
 
 namespace codecool_series_angular_backend.DAL;
 
-    public class ShowService : IShowService
+public class ShowService : IShowService
     {
         private codecoolseriesContext _context;
 
