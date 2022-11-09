@@ -1,5 +1,6 @@
 ﻿using codecool_series_angular_backend.DAL;
 using codecool_series_angular_backend.Models;
+using codecool_series_angular_backend.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace codecool_series_angular_backend.Controllers;
@@ -31,5 +32,11 @@ public class ShowApiController : ControllerBase
     public async Task<List<ShowViewModel>> GetTopHundred()
     {
         return await _showService.GetTopHundredShow();
+    }
+
+    [HttpGet("shows/genres")]
+    public async Task<List<Genre>> GetAllGenre()
+    {
+        return await _showService.GetAllGenre();
     }
 }
