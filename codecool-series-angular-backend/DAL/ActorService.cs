@@ -1,4 +1,5 @@
 ﻿using codecool_series_angular_backend.Models;
+using codecool_series_angular_backend.Models.ViewModels;
 using Microsoft.EntityFrameworkCore;
 
 namespace codecool_series_angular_backend.DAL;
@@ -28,7 +29,7 @@ public class ActorService : IActorService
             Birthday = actorFromDb.Birthday,
             Death = actorFromDb.Death,
             Biography = actorFromDb.Biography,
-            ShowCharacters = actorFromDb.ShowCharacters,
+            ShowCharacters = actorFromDb.ShowCharacters.OrderBy(showchar=>showchar.ShowId).ToList(),
             ShowList = actorFromDb.ShowCharacters.Select(showchar => new KeyValuePair<int, string>(showchar.ShowId, showchar.Show.Title))
                 .ToDictionary(showchar=>showchar.Key,showchar=>showchar.Value)
         };
