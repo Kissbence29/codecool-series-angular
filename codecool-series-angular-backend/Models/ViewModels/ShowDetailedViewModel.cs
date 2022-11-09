@@ -1,4 +1,4 @@
-﻿namespace codecool_series_angular_backend.Models;
+﻿namespace codecool_series_angular_backend.Models.ViewModels;
 
 public class ShowDetailedViewModel : Show
 {
