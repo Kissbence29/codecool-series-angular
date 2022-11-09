@@ -1,5 +1,5 @@
 ﻿using codecool_series_angular_backend.DAL;
-using codecool_series_angular_backend.Models;
+using codecool_series_angular_backend.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace codecool_series_angular_backend.Controllers;
