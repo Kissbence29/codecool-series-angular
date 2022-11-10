@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { SeriesService } from '../Services/series.service';
 import { Show } from '../Models/Show';
-import { SeriesCardComponent } from '../series-card/series-card.component';
 import { Genre } from '../Models/Genre';
 @Component({
   selector: 'app-series',
@@ -17,7 +15,7 @@ export class SeriesComponent implements OnInit {
   public genres: Genre[] = [];
   private selectedGenre: string = "";
   private sortedShow: Show[] = [];
-  constructor(private seriesService: SeriesService, private router: Router, private child: SeriesCardComponent) {
+  constructor(private seriesService: SeriesService) {
   }
 
   onChange(event: Event) {
@@ -55,15 +53,15 @@ export class SeriesComponent implements OnInit {
 
   getGenres() {
     this.seriesService.getAllGenre().subscribe(result => {
-      this.genres = result;
+      this.genres = result as Genre[];
     }
     );
   }
 
-  selectGenre(value: string) {
-    this.selectedGenre = value;
+  selectGenre(eventData:{genre:string}) {
+    this.selectedGenre = eventData.genre;
     this.filterShowsByGenre();
-
+    console.log(this.selectedGenre);
   }
 
   filterShowsByGenre() {
@@ -81,11 +79,6 @@ export class SeriesComponent implements OnInit {
       }
       console.log(this.sortedShow.length)
     }
-  }
-
-  noResult()
-  {
-    return this.shows.length!==0;
   }
 }
 
