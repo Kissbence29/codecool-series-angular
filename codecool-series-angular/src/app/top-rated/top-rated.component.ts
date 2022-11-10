@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Genre } from '../Models/Genre';
 import { Show } from '../Models/Show';
 import { SeriesCardComponent } from '../series-card/series-card.component';
 import { SeriesService } from '../Services/series.service';
@@ -9,12 +10,19 @@ import { SeriesService } from '../Services/series.service';
   styleUrls: ['./top-rated.component.css']
 })
 export class TopRatedComponent implements OnInit {
-
+  public genres: Genre[] = [];
   public shows:Show[]=[];
+  public selectedGenre:string = "";
+  public baseShows:Show[] = [];
   constructor(private seriesService:SeriesService) { }
 
   ngOnInit(): void {
     this.getShows();
+    this.getGenres();
+    this.genres = this.genres.filter((genre)=>
+    {
+        this.shows.map(show=>show.showGenres?.includes(genre.name));
+    })
   }
 
   private getShows()
@@ -22,9 +30,36 @@ export class TopRatedComponent implements OnInit {
     this.seriesService.getTopHundred().subscribe(result=>
     {
         this.shows=result as Show[];
+        this.baseShows = result as Show[];
 
     },error=>console.error(error)
     )
   }
 
+  private getGenres()
+  {
+    this.seriesService.getAllGenre().subscribe(result=>
+      {
+        this.genres = result as Genre[];
+      },error=>console.error(error))
+  }
+
+  selectGenre(eventdata:{genre:string})
+  {
+    this.selectedGenre = eventdata.genre;
+    this.filterShow();
+  }
+
+  filterShow()
+  {
+      if(this.selectedGenre=="")
+      {
+        this.shows = this.baseShows;
+      }
+      else
+      {
+        this.shows = this.baseShows;
+        this.shows = this.shows.filter(show=>show.showGenres?.includes(this.selectedGenre));
+      }
+  }
 }

@@ -1,5 +1,7 @@
 <h1 class="title">Top 100 TV Shows!</h1>
-
+<div class="genre">
+<genre-select [genres]="genres" (selectedGenre)="selectGenre($event)"></genre-select>
+</div>
 <div class="parent">
 <div class="container" *ngFor="let show of shows">
     <div class="card">
