@@ -1,0 +1,5 @@
+<select #genreselect name="Genres" id="genres" (change)="onChange($event)" >
+    <option  disabled>Select Genre</option>
+    <option  value=""></option>
+    <option *ngFor="let genre of genres" value="{{genre.name}}">{{genre.name}}</option>
+  </select>

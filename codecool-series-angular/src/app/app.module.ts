@@ -10,6 +10,7 @@ import { SafePipe } from './safe.pipe';
 import { ActorPageComponent } from './actor-page/actor-page.component';
 import { SeriesCardComponent } from './series-card/series-card.component';
 import { TopRatedComponent } from './top-rated/top-rated.component';
+import { GenreSelectComponent } from './genre-select/genre-select.component';
 const routes: Routes = [
   {path:'series/top-rated',pathMatch:"full",component:TopRatedComponent},
   { path: 'series',pathMatch:"full", component: SeriesComponent },
@@ -21,7 +22,7 @@ const routes: Routes = [
 ];
 @NgModule({
   declarations: [
-    AppComponent,SeriesComponent, SeriesDetailComponent,SafePipe, ActorPageComponent, SeriesCardComponent, TopRatedComponent
+    AppComponent,SeriesComponent, SeriesDetailComponent,SafePipe, ActorPageComponent, SeriesCardComponent, TopRatedComponent, GenreSelectComponent
   ],
   imports: [
     BrowserModule, HttpClientModule, RouterModule.forRoot(routes),NgxPaginationModule
