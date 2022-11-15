@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Genre } from '../Models/Genre';
 import { Show } from '../Models/Show';
-import { SeriesCardComponent } from '../series-card/series-card.component';
 import { SeriesService } from '../Services/series.service';
 
 @Component({
@@ -19,10 +18,6 @@ export class TopRatedComponent implements OnInit {
   ngOnInit(): void {
     this.getShows();
     this.getGenres();
-    this.genres = this.genres.filter((genre)=>
-    {
-        this.shows.map(show=>show.showGenres?.includes(genre.name));
-    })
   }
 
   private getShows()

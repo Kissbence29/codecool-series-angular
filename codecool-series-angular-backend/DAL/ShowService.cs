@@ -103,7 +103,7 @@ public class ShowService : IShowService
 
         public async Task<List<Genre>> GetAllGenre()
         {
-            return await _context.Genres.AsNoTracking().ToListAsync();
+            return await _context.Genres.Where(genre=>genre.ShowGenres.Count!=0).AsNoTracking().ToListAsync();
         }
     }
 
