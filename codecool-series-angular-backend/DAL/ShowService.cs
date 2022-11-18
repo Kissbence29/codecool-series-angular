@@ -105,5 +105,10 @@ public class ShowService : IShowService
         {
             return await _context.Genres.Where(genre=>genre.ShowGenres.Count!=0).AsNoTracking().ToListAsync();
         }
+
+        public async Task<List<Season>> GetAllSeasonsByShowId(int showId)
+        {
+            return await _context.Seasons.Include(season => season.Episodes.OrderBy(episode=>episode.EpisodeNumber)).Where(season=>season.ShowId==showId).Distinct().ToListAsync();
+        }
     }
 
