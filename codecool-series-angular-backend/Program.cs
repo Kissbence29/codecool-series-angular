@@ -16,6 +16,7 @@ builder.Services.AddScoped<IShowService, ShowService>();
 builder.Services.AddScoped<IActorService, ActorService>();
 builder.Services.AddControllers().AddJsonOptions(x =>
     x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+builder.Services.AddResponseCaching();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -31,5 +32,6 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+app.UseResponseCaching();
 
 app.Run();
