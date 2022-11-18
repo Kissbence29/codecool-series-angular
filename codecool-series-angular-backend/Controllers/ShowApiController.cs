@@ -39,4 +39,10 @@ public class ShowApiController : ControllerBase
     {
         return await _showService.GetAllGenre();
     }
+
+    [HttpGet("shows/season/{showId}")]
+    public async Task<List<Season>> GetSeasonsByShowId(int showId)
+    {
+        return await _showService.GetAllSeasonsByShowId(showId);
+    }
 }
