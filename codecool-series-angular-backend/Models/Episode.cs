@@ -1,4 +1,6 @@
-﻿namespace codecool_series_angular_backend.Models;
+﻿using System.Text.Json.Serialization;
+
+namespace codecool_series_angular_backend.Models;
 
 public class Episode
 {
@@ -7,6 +9,6 @@ public class Episode
     public short EpisodeNumber { get; set; }
     public string? Overview { get; set; }
     public int SeasonId { get; set; }
-
+    [JsonIgnore]
     public virtual Season Season { get; set; } = null!;
 }
