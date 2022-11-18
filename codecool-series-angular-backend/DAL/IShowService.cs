@@ -9,4 +9,5 @@ public interface IShowService
     Task<ShowDetailedViewModel> GetShow(int showId);
     Task<List<ShowViewModel>> GetTopHundredShow();
     Task<List<Genre>> GetAllGenre();
+    Task<List<Season>> GetAllSeasonsByShowId(int showId);
 }
