@@ -11,7 +11,10 @@ import { ActorPageComponent } from './actor-page/actor-page.component';
 import { SeriesCardComponent } from './series-card/series-card.component';
 import { TopRatedComponent } from './top-rated/top-rated.component';
 import { GenreSelectComponent } from './genre-select/genre-select.component';
+import { SeriesSeasonComponent } from './series-season/series-season.component';
+import { FormsModule } from '@angular/forms';
 const routes: Routes = [
+  {path:'seasons/:showId',pathMatch:"full",component:SeriesSeasonComponent},
   {path:'series/top-rated',pathMatch:"full",component:TopRatedComponent},
   { path: 'series',pathMatch:"full", component: SeriesComponent },
   { path: '', redirectTo: '/series', pathMatch: 'full' },
@@ -22,10 +25,10 @@ const routes: Routes = [
 ];
 @NgModule({
   declarations: [
-    AppComponent,SeriesComponent, SeriesDetailComponent,SafePipe, ActorPageComponent, SeriesCardComponent, TopRatedComponent, GenreSelectComponent
+    AppComponent,SeriesComponent, SeriesDetailComponent,SafePipe, ActorPageComponent, SeriesCardComponent, TopRatedComponent, GenreSelectComponent,SeriesSeasonComponent
   ],
   imports: [
-    BrowserModule, HttpClientModule, RouterModule.forRoot(routes),NgxPaginationModule
+    BrowserModule, HttpClientModule, RouterModule.forRoot(routes),NgxPaginationModule,FormsModule,
   ],
   providers: [SeriesCardComponent],
   bootstrap: [AppComponent]
