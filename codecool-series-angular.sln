@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "codecool-series-angular", "codecool-series-angular\codecool-series-angular.esproj", "{94255D2D-B5B9-48A5-BD4E-5AA539F600F7}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "codecool-series-angular-backend", "codecool-series-angular-backend\codecool-series-angular-backend.csproj", "{0DF6E459-93B1-4C17-AD47-03D4ADAE23C9}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "codecool-series-angular-frontend", "codecool-series-angular-frontend\codecool-series-angular-frontend.esproj", "{7C696B70-19BD-44BC-8567-03F56C8209BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,16 +13,16 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{94255D2D-B5B9-48A5-BD4E-5AA539F600F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{94255D2D-B5B9-48A5-BD4E-5AA539F600F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{94255D2D-B5B9-48A5-BD4E-5AA539F600F7}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{94255D2D-B5B9-48A5-BD4E-5AA539F600F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{94255D2D-B5B9-48A5-BD4E-5AA539F600F7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{94255D2D-B5B9-48A5-BD4E-5AA539F600F7}.Release|Any CPU.Deploy.0 = Release|Any CPU
 		{0DF6E459-93B1-4C17-AD47-03D4ADAE23C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0DF6E459-93B1-4C17-AD47-03D4ADAE23C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0DF6E459-93B1-4C17-AD47-03D4ADAE23C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0DF6E459-93B1-4C17-AD47-03D4ADAE23C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C696B70-19BD-44BC-8567-03F56C8209BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C696B70-19BD-44BC-8567-03F56C8209BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C696B70-19BD-44BC-8567-03F56C8209BC}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{7C696B70-19BD-44BC-8567-03F56C8209BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C696B70-19BD-44BC-8567-03F56C8209BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C696B70-19BD-44BC-8567-03F56C8209BC}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
