@@ -11,9 +11,6 @@ services:
       dockerfile: './Dockerfile'
     ports:
       - 7206:7206
-    depends_on:
-      db:
-        condition: service_healthy
     
     networks:
       - database
@@ -41,6 +38,7 @@ services:
 
       networks:
         - database
+
   
 networks:
   database:
