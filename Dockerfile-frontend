@@ -1,0 +1,11 @@
+# Stage 1
+FROM node:14.15.4 as node
+WORKDIR /app
+COPY codecool-series-angular-frontend/package.json /app/package.json
+RUN npm install
+COPY ./codecool-series-angular-frontend/. ./
+RUN npm run build --prod
+# Stage 2
+FROM nginx:alpine
+COPY --from=node /app/dist/codecool-series-angular /usr/share/nginx/html
+EXPOSE 4200:80

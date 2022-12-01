@@ -1,0 +1,64 @@
+# Please refer https://aka.ms/HTTPSinContainer on how to setup an https developer certificate for your ASP .NET Core service.
+
+version: '3.4'
+
+services:
+
+  db:
+    image: postgres
+    healthcheck:
+      test: ["CMD", "pg_isready"]
+      interval: 10s
+      timeout: 30s
+      retries: 5
+      start_period: 30s
+    restart: always
+    environment:
+      POSTGRES_DB: 'codecool-series'
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'postgres'
+    ports:
+      - '5432:5432'
+    volumes: 
+      - ./postgres-data:/var/lib/postgresql/data
+        # copy the sql scripts to init database
+      - ./codecool-series-angular-backend/data:/docker-entrypoint-initdb.d/data
+      - ./codecool-series-angular-backend/data/aninitmydb.sh:/docker-entrypoint-initdb.d/aninitmydb.sh
+       
+
+    networks:
+      - database
+  
+  codecoolseriesangularbackend:
+    image: kissbence30/codecoolseriesangularbackend:latest
+    build:
+      dockerfile: './Dockerfile-backend'
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - 7206:7206
+    
+    healthcheck:
+      test: curl --silent --fail http://localhost:7206/healthcheck || exit 1
+      interval: 10s
+      timeout: 30s
+      retries: 10
+    
+    networks:
+      - database
+
+
+  codecoolseriesfrontend:
+    image: kissbence30/codecoolseriesfrontend:latest
+    build:
+      dockerfile: ./Dockerfile-frontend
+    depends_on:
+      codecoolseriesangularbackend:
+        condition: service_started
+    ports:
+      - "4200:80"
+  
+networks:
+  database:
+    driver: bridge
