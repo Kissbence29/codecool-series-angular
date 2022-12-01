@@ -17,7 +17,7 @@ public class ActorService : IActorService
     {
         var actorFromDb = await _context.Actors
             .Include(actor => actor.ShowCharacters)
-            .ThenInclude(showchar=>showchar.Show)
+            .ThenInclude(showchar => showchar.Show)
             .AsNoTracking()
             .Where(actor => actor.Name == actorName)
             .FirstAsync();
@@ -29,9 +29,9 @@ public class ActorService : IActorService
             Birthday = actorFromDb.Birthday,
             Death = actorFromDb.Death,
             Biography = actorFromDb.Biography,
-            ShowCharacters = actorFromDb.ShowCharacters.OrderBy(showchar=>showchar.ShowId).ToList(),
+            ShowCharacters = actorFromDb.ShowCharacters.OrderBy(showchar => showchar.ShowId).ToList(),
             ShowList = actorFromDb.ShowCharacters.Select(showchar => new KeyValuePair<int, string>(showchar.ShowId, showchar.Show.Title))
-                .ToDictionary(showchar=>showchar.Key,showchar=>showchar.Value)
+                .ToDictionary(showchar => showchar.Key, showchar => showchar.Value)
         };
 
         return actor;
