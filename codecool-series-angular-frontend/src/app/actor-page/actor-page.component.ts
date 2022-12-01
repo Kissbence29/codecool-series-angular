@@ -1,3 +1,4 @@
+import { KeyValue } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Actor } from '../Models/Actor';
@@ -15,7 +16,10 @@ export class ActorPageComponent implements OnInit {
   ngOnInit(): void {
 
     this.actorName = this.route.snapshot.params['actorName'];
-    this.actorService.getActorByName(this.actorName).subscribe(actor => this.actor = actor);
+    this.actorService.getActorByName(this.actorName).subscribe(actor =>
+    {
+      this.actor = actor;
+    });
 
   }
   nobio(): boolean {
@@ -25,5 +29,9 @@ export class ActorPageComponent implements OnInit {
 
   noCharacterName(showcharacter:string):boolean{
     return showcharacter!=="";
+  }
+
+  originalOrder = (a: KeyValue<number, string>, b: KeyValue<number, string>): number => {
+    return 0;
   }
 }
