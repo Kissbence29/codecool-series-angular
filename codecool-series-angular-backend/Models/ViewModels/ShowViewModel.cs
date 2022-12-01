@@ -11,6 +11,5 @@ public class ShowViewModel
     public DateOnly? Year { get; set; }
     public short? Runtime { get; set; }
     public List<string?>? ShowGenres { get; set; }
-    public List<string?>? ActorList { get; set; }
     public decimal? Rating { get; set; }
 }
