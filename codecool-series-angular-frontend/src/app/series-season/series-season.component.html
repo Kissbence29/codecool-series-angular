@@ -1,18 +1,19 @@
-<select id="select-season" (change)="selectSeason($event)" name="seasons" >
-    <option *ngFor="let season of seasons" value="{{season.seasonNumber}}" [attr.selected]="season.seasonNumber==0?true:null">{{season.title}}</option>
+<select id="select-season" (change)="selectSeason($event)" name="seasons">
+    <option *ngFor="let season of seasons" value="{{season.seasonNumber}}"
+        >{{season.title}}</option>
 </select>
 
 <div *ngIf="isSeason()">
-    <table>
+    <table class="table">
         <th>Episode Number</th>
         <th>Title</th>
         <th>Overview</th>
-        <tbody  *ngFor="let episode of selectedSeason.episodes">
-            <tr style="text-align: center;">
-            <td>{{episode.episodeNumber}}</td>
-            <td>{{episode.title}}</td>
-            <td>{{episode.overview}}</td>
-        </tr>
+        <tbody>
+            <tr class="row" *ngFor="let episode of selectedSeason.episodes">
+                <td class="episode">{{episode.episodeNumber}}</td>
+                <td class="episode">{{episode.title}}</td>
+                <td class="overview">{{episode.overview}}</td>
+            </tr>
         </tbody>
     </table>
 </div>
