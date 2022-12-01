@@ -11,16 +11,17 @@ body {
     font-size: 16px;
     line-height: 1.5;
     color: #fff;
-    background: linear-gradient(225deg,rgba(15,63,255,0.8) 20%,rgba(255,11,122)40%, rgba(0,6,57));
+    background: linear-gradient(225deg,rgba(15,63,255,0.8) 20%, rgba(0,6,57));
                 
 }
 
 .actorlink[ng-reflect-router-link]{
     text-decoration: none;
+    color:#d4af37 ;
 }
 
 .actorlink[ng-reflect-router-link]:hover{
     text-decoration: none;
     cursor: pointer;
-    color:orange;
+    color:#D2042D;
 }
