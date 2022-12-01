@@ -3,8 +3,8 @@ const PROXY_CONFIG = [
     context: [
       "/showapi","/actorapi"
     ],
-    target: "http://localhost:5206",
-    secure: true,
+    target: "http://localhost:7206",
+    secure: false,
     changeOrigin: true
   }
 ]
