@@ -104,7 +104,7 @@ public class ShowService : IShowService
     {
         return await _context.Seasons
             .Include(season => season.Episodes.OrderBy(episode => episode.EpisodeNumber))
-            .Where(season => season.ShowId == showId)
+            .Where(season => season.ShowId == showId && !season.Title!.Contains("Special"))
             .Distinct().
             ToListAsync();
     }
