@@ -17,7 +17,7 @@ public class ShowApiController : ControllerBase
     }
 
     [HttpGet("shows")]
-    [ResponseCache(Duration = 300,Location = ResponseCacheLocation.Any)]
+    [ResponseCache(Duration = 300, Location = ResponseCacheLocation.None)]
     public async Task<List<ShowViewModel>> GetAllShows()
     {
         return await _showService.GetAllShows();
