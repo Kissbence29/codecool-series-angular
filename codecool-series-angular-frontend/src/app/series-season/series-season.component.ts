@@ -16,7 +16,7 @@ export class SeriesSeasonComponent implements OnInit {
   baseSeasons:Season[]=[];
   showId:string='';
   @Input()
-  seasonNumber:number=0;
+  seasonNumber:number=1;
   selectedSeason:Season={};
   
   ngOnInit(): void
@@ -31,8 +31,7 @@ export class SeriesSeasonComponent implements OnInit {
       {
         this.seasons = result as Season[];
         this.baseSeasons = result as Season[];
-        console.log(result);
-        this.selectedSeason=this.seasons.find(season=>season.seasonNumber==this.seasonNumber) as Season;
+        this.getSeasonBySeasonNumber(this.seasonNumber);
       },error=>console.error(error));
       
   }
