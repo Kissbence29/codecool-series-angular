@@ -25,7 +25,9 @@ public partial class codecoolseriesContext : DbContext
     {
         if (!optionsBuilder.IsConfigured)
         {
-            optionsBuilder.UseNpgsql("Name=ConnectionStrings:codecool-series");
+            optionsBuilder.UseNpgsql(
+                "Name=ConnectionStrings:codecool-series",
+                option => option.EnableRetryOnFailure());
         }
     }
 
