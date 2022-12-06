@@ -17,7 +17,7 @@ public class ShowApiController : ControllerBase
     }
 
     [HttpGet("shows")]
-    [ResponseCache(Duration = 300, Location = ResponseCacheLocation.None)]
+    [ResponseCache(Duration = 60, Location = ResponseCacheLocation.Client)]
     public async Task<List<ShowViewModel>> GetAllShows()
     {
         return await _showService.GetAllShows();
@@ -30,7 +30,7 @@ public class ShowApiController : ControllerBase
     }
 
     [HttpGet("shows/top-rated")]
-    [ResponseCache(Duration = 300, Location = ResponseCacheLocation.Client)]
+    [ResponseCache(Duration = 60, Location = ResponseCacheLocation.Client)]
     public async Task<List<ShowViewModel>> GetTopHundred()
     {
         return await _showService.GetTopHundredShow();
