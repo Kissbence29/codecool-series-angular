@@ -15,12 +15,13 @@ body {
                 
 }
 
-.actorlink[ng-reflect-router-link]{
+
+.actorlink{
     text-decoration: none;
     color:#d4af37 ;
 }
 
-.actorlink[ng-reflect-router-link]:hover{
+.actorlink:hover{
     text-decoration: none;
     cursor: pointer;
     color:#D2042D;
