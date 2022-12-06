@@ -5,7 +5,6 @@ import { Show } from '../Models/Show';
 import { Genre } from '../Models/Genre';
 import { Season } from '../Models/Season';
 
-const backendUri:string = "http://localhost:7206";
 @Injectable({
   providedIn: 'root'
 })
@@ -14,25 +13,25 @@ export class SeriesService {
   constructor(private http:HttpClient) { }
 
   getAllShows():Observable<Show[]>{
-    return this.http.get<Show[]>(`${backendUri}/showapi/shows`);
+    return this.http.get<Show[]>(`/showapi/shows`);
   }
 
   getShowbyId(id:string):Observable<Show>{
-    return this.http.get<Show>(`${backendUri}/showapi/shows/${id}`);
+    return this.http.get<Show>(`/showapi/shows/${id}`);
   }
 
   getTopHundred():Observable<Show[]>
   {
-    return this.http.get<Show[]>(`${backendUri}/showapi/shows/top-rated`);
+    return this.http.get<Show[]>(`/showapi/shows/top-rated`);
   }
 
   getAllGenre():Observable<Genre[]>
   {
-    return this.http.get<Genre[]>(`${backendUri}/showapi/shows/genres`);
+    return this.http.get<Genre[]>(`/showapi/shows/genres`);
   }
 
   getSeasonsByShowId(id:string):Observable<Season[]>
   {
-    return this.http.get<Season[]>(`${backendUri}/showapi/shows/season/${id}`);
+    return this.http.get<Season[]>(`/showapi/shows/season/${id}`);
   }
 }
