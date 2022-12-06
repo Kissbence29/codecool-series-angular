@@ -39,14 +39,9 @@ services:
     ports:
       - 7206:7206
     
-    healthcheck:
-      test: curl --silent --fail http://localhost:7206/healthcheck || exit 1
-      interval: 10s
-      timeout: 30s
-      retries: 10
-    
     networks:
       - database
+      - app
 
 
   codecoolseriesfrontend:
@@ -58,7 +53,11 @@ services:
         condition: service_started
     ports:
       - "4200:80"
+    networks:
+      - app
   
 networks:
   database:
+    driver: bridge
+  app:
     driver: bridge
