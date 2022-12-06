@@ -7,5 +7,7 @@ COPY ./codecool-series-angular-frontend/. ./
 RUN npm run build --prod
 # Stage 2
 FROM nginx:alpine
+COPY codecool-series-angular-frontend/nginx.conf /etc/nginx/nginx.conf
 COPY --from=node /app/dist/codecool-series-angular /usr/share/nginx/html
+RUN rm -f /etc/nginx/conf.d/default.conf
 EXPOSE 4200:80
