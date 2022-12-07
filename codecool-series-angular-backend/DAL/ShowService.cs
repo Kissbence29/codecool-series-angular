@@ -108,5 +108,10 @@ public class ShowService : IShowService
             .Distinct().
             ToListAsync();
     }
+
+    public async Task<Episode> GetEpisodeByEpisodeId(int episodeId)
+    {
+        return (await _context.Episodes.FindAsync(episodeId))!;
+    }
 }
 

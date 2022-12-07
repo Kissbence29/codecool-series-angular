@@ -30,7 +30,6 @@ public class ShowApiController : ControllerBase
     }
 
     [HttpGet("shows/top-rated")]
-    [ResponseCache(Duration = 60, Location = ResponseCacheLocation.Client)]
     public async Task<List<ShowViewModel>> GetTopHundred()
     {
         return await _showService.GetTopHundredShow();
@@ -46,5 +45,11 @@ public class ShowApiController : ControllerBase
     public async Task<List<Season>> GetSeasonsByShowId(int showId)
     {
         return await _showService.GetAllSeasonsByShowId(showId);
+    }
+
+    [HttpGet("shows/season/{showid}/{seasonNumber}/{episodeId}/overview")]
+    public async Task<Episode> GetEpisodeByEpisodeId(int episodeId)
+    {
+        return await _showService.GetEpisodeByEpisodeId(episodeId);
     }
 }
