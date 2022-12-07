@@ -36,7 +36,10 @@ export class TopRatedComponent implements OnInit {
     this.seriesService.getAllGenre().subscribe(result=>
       {
         this.genres = result as Genre[];
+        this.removeUnneccessaryGenres();
       },error=>console.error(error))
+
+      
   }
 
   selectGenre(eventdata:{genre:string})
@@ -56,5 +59,26 @@ export class TopRatedComponent implements OnInit {
         this.shows = this.baseShows;
         this.shows = this.shows.filter(show=>show.showGenres?.includes(this.selectedGenre));
       }
+  }
+
+  removeUnneccessaryGenres()
+  {
+    var genreArray:Genre[] = [];
+    for(var show of this.shows)
+    {
+      for(var genre of this.genres)
+      {
+        if(show.showGenres?.includes(genre.name))
+        {
+          if(genreArray.includes(genre)){
+            console.log("What's in the box?");
+          }else{
+            genreArray.push(genre);
+          } 
+       }
+    }
+    
+  }
+  this.genres = genreArray.sort((a,b)=>a.id-b.id);
   }
 }
