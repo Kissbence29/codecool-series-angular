@@ -1,0 +1,10 @@
+.episode{
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.overview{
+    margin-top: 0.5em;
+    text-align: justify;
+    font-size: 16;
+}

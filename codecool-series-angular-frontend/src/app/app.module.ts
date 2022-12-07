@@ -13,7 +13,9 @@ import { TopRatedComponent } from './top-rated/top-rated.component';
 import { GenreSelectComponent } from './genre-select/genre-select.component';
 import { SeriesSeasonComponent } from './series-season/series-season.component';
 import { FormsModule } from '@angular/forms';
+import { EpisodeDetailComponent } from './episode-detail/episode-detail.component';
 const routes: Routes = [
+  {path:'seasons/:showId/:seasonNumber/:episodeId',pathMatch:"full",component:EpisodeDetailComponent},
   {path:'seasons/:showId',pathMatch:"full",component:SeriesSeasonComponent},
   {path:'series/top-rated',pathMatch:"full",component:TopRatedComponent},
   { path: 'series',pathMatch:"full", component: SeriesComponent },
@@ -25,7 +27,7 @@ const routes: Routes = [
 ];
 @NgModule({
   declarations: [
-    AppComponent,SeriesComponent, SeriesDetailComponent,SafePipe, ActorPageComponent, SeriesCardComponent, TopRatedComponent, GenreSelectComponent,SeriesSeasonComponent
+    AppComponent,SeriesComponent, SeriesDetailComponent,SafePipe, ActorPageComponent, SeriesCardComponent, TopRatedComponent, GenreSelectComponent,SeriesSeasonComponent, EpisodeDetailComponent
   ],
   imports: [
     BrowserModule, HttpClientModule, RouterModule.forRoot(routes),NgxPaginationModule,FormsModule,
