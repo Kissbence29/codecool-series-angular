@@ -4,16 +4,9 @@
 </select>
 
 <div *ngIf="isSeason()">
-    <table class="table">
-        <th>Episode Number</th>
-        <th>Title</th>
-        <th>Overview</th>
-        <tbody>
-            <tr class="row" *ngFor="let episode of selectedSeason.episodes">
-                <td class="episode">{{episode.episodeNumber}}</td>
-                <td class="episode">{{episode.title}}</td>
-                <td class="overview">{{episode.overview}}</td>
-            </tr>
-        </tbody>
-    </table>
+    <ul>
+        <li *ngFor="let episode of selectedSeason.episodes">
+            <div>Episode {{episode.episodeNumber}}</div><a class="actorlink" routerLink="/seasons/{{showId}}/{{selectedSeason.seasonNumber}}/{{episode.id}}">{{episode.title}}</a>
+        </li>
+    </ul>
 </div>
