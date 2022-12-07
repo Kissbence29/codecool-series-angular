@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Show } from '../Models/Show';
 import { Genre } from '../Models/Genre';
 import { Season } from '../Models/Season';
+import { Episode } from '../Models/Episode';
 
 @Injectable({
   providedIn: 'root'
@@ -33,5 +34,10 @@ export class SeriesService {
   getSeasonsByShowId(id:string):Observable<Season[]>
   {
     return this.http.get<Season[]>(`/showapi/shows/season/${id}`);
+  }
+
+  getEpisodeByEpisodeId(showid:string,seasonNumber:string,episodeId:string):Observable<Episode>
+  {
+    return this.http.get<Episode>(`showapi/shows/season/${showid}/${seasonNumber}/${episodeId}/overview`);
   }
 }
