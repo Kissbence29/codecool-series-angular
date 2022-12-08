@@ -1,12 +1,12 @@
-<select id="select-season" (change)="selectSeason($event)" name="seasons">
-    <option *ngFor="let season of seasons" value="{{season.seasonNumber}}"
-        >{{season.title}}</option>
-</select>
+
+<button  *ngFor="let season of seasons" id="select-season" (click)="selectSeason($event)" name="seasons" value="{{season.seasonNumber}}">
+    {{season.title}}
+</button>
 
 <div *ngIf="isSeason()">
     <ul>
         <li *ngFor="let episode of selectedSeason.episodes">
-            <div>Episode {{episode.episodeNumber}}</div><a class="actorlink" routerLink="/seasons/{{showId}}/{{selectedSeason.seasonNumber}}/{{episode.id}}">{{episode.title}}</a>
+            <div class="number">Episode {{episode.episodeNumber}}</div><a class="actorlink title" routerLink="/seasons/{{showId}}/{{selectedSeason.seasonNumber}}/{{episode.id}}">{{episode.title}}</a>
         </li>
     </ul>
 </div>
