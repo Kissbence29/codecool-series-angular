@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewChecked, Component, OnInit } from '@angular/core';
 import { Genre } from '../Models/Genre';
 import { Show } from '../Models/Show';
 import { SeriesService } from '../Services/series.service';
@@ -8,12 +8,16 @@ import { SeriesService } from '../Services/series.service';
   templateUrl: './top-rated.component.html',
   styleUrls: ['./top-rated.component.css']
 })
-export class TopRatedComponent implements OnInit {
+export class TopRatedComponent implements OnInit,AfterViewChecked {
   public genres: Genre[] = [];
   public shows:Show[]=[];
   public selectedGenre:string = "";
   public baseShows:Show[] = [];
   constructor(private seriesService:SeriesService) { }
+  ngAfterViewChecked(): void {
+    
+    if(this.shows.length!==0){this.removeUnneccessaryGenres();}
+  }
 
   ngOnInit(): void {
     this.getShows();
@@ -36,7 +40,6 @@ export class TopRatedComponent implements OnInit {
     this.seriesService.getAllGenre().subscribe(result=>
       {
         this.genres = result as Genre[];
-        this.removeUnneccessaryGenres();
       },error=>console.error(error))
 
       
@@ -64,6 +67,7 @@ export class TopRatedComponent implements OnInit {
   removeUnneccessaryGenres()
   {
     var genreArray:Genre[] = [];
+    this.shows = this.baseShows;
     for(var show of this.shows)
     {
       for(var genre of this.genres)
