@@ -45,7 +45,7 @@ export class SeriesComponent implements OnInit {
 
   getShows() {
     this.seriesService.getAllShows().subscribe(result => {
-      this.shows = result;
+      this.shows = (result as Show[]);
       this.baseShows = this.shows;
     }
     )
@@ -77,9 +77,11 @@ export class SeriesComponent implements OnInit {
           this.sortedShow.push(show);
         }
       }
-      console.log(this.sortedShow.length)
+      
     }
   }
+
+
 }
 
 
