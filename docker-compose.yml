@@ -5,7 +5,9 @@ version: '3.4'
 services:
 
   db:
-    image: postgres
+    image: kissbence30/codecoolseriesdb:latest
+    build:
+      dockerfile: './Dockerfile-db'
     healthcheck:
       test: ["CMD", "pg_isready"]
       interval: 10s
@@ -17,13 +19,8 @@ services:
       POSTGRES_DB: 'codecool-series'
       POSTGRES_USER: 'postgres'
       POSTGRES_PASSWORD: 'postgres'
-    ports:
-      - '5432:5432'
     volumes: 
-      - ./postgres-data:/var/lib/postgresql/data
-        # copy the sql scripts to init database
-      - ./codecool-series-angular-backend/data:/docker-entrypoint-initdb.d/data
-      - ./codecool-series-angular-backend/data/aninitmydb.sh:/docker-entrypoint-initdb.d/aninitmydb.sh
+      - app-db:/var/lib/postgresql/data
        
 
     networks:
@@ -36,8 +33,6 @@ services:
     depends_on:
       db:
         condition: service_healthy
-    ports:
-      - 7206:7206
     
     networks:
       - database
@@ -61,3 +56,5 @@ networks:
     driver: bridge
   app:
     driver: bridge
+volumes:
+  app-db:
