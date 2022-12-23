@@ -13,62 +13,58 @@ export class SeriesComponent implements OnInit {
   p: number = 1;
   count: number = 9;
   public genres: Genre[] = [];
-  private selectedGenre: string = "";
+  private selectedGenre: string = '';
   private sortedShow: Show[] = [];
-  constructor(private seriesService: SeriesService) {
-  }
+  constructor(private seriesService: SeriesService) {}
 
   onChange(event: Event) {
     var input = (event.target as HTMLInputElement).value;
-    if (this.selectedGenre == "" && input == "") {
+    if (this.selectedGenre == '' && input == '') {
       this.shows = this.baseShows;
-    }
-    else if ((this.selectedGenre !== "" && input == "") || (this.selectedGenre !== "" && input !== "")) {
+    } else if (
+      (this.selectedGenre !== '' && input == '') ||
+      (this.selectedGenre !== '' && input !== '')
+    ) {
       this.shows = this.sortedShow;
-    }
-
-    else if (this.selectedGenre == "" && input != "") {
+    } else if (this.selectedGenre == '' && input != '') {
       this.shows = this.baseShows;
     }
     this.filterByTitle(input);
   }
 
   private filterByTitle(input: string) {
-    this.shows = this.shows.filter(show => show.title?.toLowerCase().includes(input));
+    this.shows = this.shows.filter((show) =>
+      show.title?.toLowerCase().includes(input)
+    );
   }
 
   ngOnInit(): void {
     this.getShows();
     this.getGenres();
-
   }
 
   getShows() {
-    this.seriesService.getAllShows().subscribe(result => {
-      this.shows = (result as Show[]);
+    this.seriesService.getAllShows().subscribe((result) => {
+      this.shows = result as Show[];
       this.baseShows = this.shows;
-    }
-    )
+    });
   }
 
   getGenres() {
-    this.seriesService.getAllGenre().subscribe(result => {
+    this.seriesService.getAllGenre().subscribe((result) => {
       this.genres = result as Genre[];
-    }
-    );
+    });
   }
 
-  selectGenre(eventData:{genre:string}) {
+  selectGenre(eventData: { genre: string }) {
     this.selectedGenre = eventData.genre;
     this.filterShowsByGenre();
-    console.log(this.selectedGenre);
   }
 
   filterShowsByGenre() {
-    if (this.selectedGenre == "") {
+    if (this.selectedGenre == '') {
       this.shows = this.baseShows;
-    }
-    else {
+    } else {
       this.shows = [];
       this.sortedShow = [];
       for (let show of this.baseShows) {
@@ -77,11 +73,6 @@ export class SeriesComponent implements OnInit {
           this.sortedShow.push(show);
         }
       }
-      
     }
   }
-
-
 }
-
-

@@ -1,13 +1,12 @@
 # Please refer https://aka.ms/HTTPSinContainer on how to setup an https developer certificate for your ASP .NET Core service.
 
-version: '3.4'
+version: "3.4"
 
 services:
-
   db:
     image: kissbence30/codecoolseriesdb:latest
     build:
-      dockerfile: './Dockerfile-db'
+      dockerfile: "./Dockerfile-db"
     healthcheck:
       test: ["CMD", "pg_isready"]
       interval: 10s
@@ -16,28 +15,26 @@ services:
       start_period: 30s
     restart: always
     environment:
-      POSTGRES_DB: 'codecool-series'
-      POSTGRES_USER: 'postgres'
-      POSTGRES_PASSWORD: 'postgres'
-    volumes: 
+      POSTGRES_DB: "codecool-series"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+    volumes:
       - app-db:/var/lib/postgresql/data
-       
 
     networks:
       - database
-  
+
   codecoolseriesangularbackend:
     image: kissbence30/codecoolseriesangularbackend:latest
     build:
-      dockerfile: './Dockerfile-backend'
+      dockerfile: "./Dockerfile-backend"
     depends_on:
       db:
         condition: service_healthy
-    
+
     networks:
       - database
       - app
-
 
   codecoolseriesfrontend:
     image: kissbence30/codecoolseriesfrontend:latest
@@ -50,7 +47,7 @@ services:
       - "4200:80"
     networks:
       - app
-  
+
 networks:
   database:
     driver: bridge

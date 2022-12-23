@@ -7,7 +7,7 @@ import { ActorServiceService } from '../Services/actor-service.service';
 @Component({
   selector: 'app-actor-page',
   templateUrl: './actor-page.component.html',
-  styleUrls: ['./actor-page.component.css']
+  styleUrls: ['./actor-page.component.css'],
 })
 export class ActorPageComponent implements OnInit {
   public actor: Actor;
@@ -20,18 +20,19 @@ export class ActorPageComponent implements OnInit {
     {
       this.actor = actor;
     });
-
   }
   nobio(): boolean {
-    console.log(this.actor);
-    return this.actor.biography !== "";
+    return this.actor.biography !== '';
   }
 
-  noCharacterName(showcharacter:string):boolean{
-    return showcharacter!=="";
+  noCharacterName(showcharacter: string): boolean {
+    return showcharacter !== '';
   }
 
-  originalOrder = (a: KeyValue<number, string>, b: KeyValue<number, string>): number => {
+  originalOrder = (
+    a: KeyValue<number, string>,
+    b: KeyValue<number, string>
+  ): number => {
     return 0;
-  }
+  };
 }
